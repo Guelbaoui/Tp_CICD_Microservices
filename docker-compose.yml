@@ -8,8 +8,8 @@ services:
       - "9000:9000"
     environment:
       - SONAR_JDBC_URL=jdbc:postgresql://sonarqube-db:5432/sonarqube
-      - SONAR_JDBC_USERNAME=sonar
-      - SONAR_JDBC_PASSWORD=sonar_pass
+      - SONAR_JDBC_USERNAME=postgres
+      - SONAR_JDBC_PASSWORD=hajar
     depends_on:
       - sonarqube-db
 
@@ -17,8 +17,8 @@ services:
     image: postgres:15
     container_name: sonarqube-db
     environment:
-      POSTGRES_USER: sonar
-      POSTGRES_PASSWORD: sonar_pass
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: hajar
       POSTGRES_DB: sonarqube
     volumes:
       - postgres_data:/var/lib/postgresql/data
