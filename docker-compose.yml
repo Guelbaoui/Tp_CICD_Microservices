@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  sonarqube:
+    image: sonarqube:latest
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+    environment:
+      - sonar.jdbc.url=jdbc:mysql://localhost:3306/sonarqube?useUnicode=true&characterEncoding=utf8&useSSL=false&requireSSL=false&useSSL=false&rewriteBatchedStatements=true
+      - SONARQUBE_JDBC_USERNAME=sonarqube_user
+      - SONARQUBE_JDBC_PASSWORD=password
+
+
+  sonarqube-db:
+    image: mysql:8.0
+    container_name: sonarqube-db
+    environment:
+      MYSQL_DATABASE: sonarqube
+      MYSQL_USER: sonarqube_user
+      MYSQL_PASSWORD: password
+   
+
+volumes:
+  mysql_data:
